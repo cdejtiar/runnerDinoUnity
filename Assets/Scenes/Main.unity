@@ -2124,6 +2124,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5868624347657155976, guid: 8335bd2e35e11194ca8ae3a7b865159a, type: 3}
+      propertyPath: canvasTransform
+      value: 
+      objectReference: {fileID: 934661603}
+    - target: {fileID: 5868624347657155976, guid: 8335bd2e35e11194ca8ae3a7b865159a, type: 3}
+      propertyPath: gameOverWindowPrefab
+      value: 
+      objectReference: {fileID: 122375119873516976, guid: 8abe7aadf2728b3488d16ca4e6257979, type: 3}
     - target: {fileID: 7091589635486185325, guid: 8335bd2e35e11194ca8ae3a7b865159a, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2136,7 +2144,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0.32000732
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7765447768260684307, guid: 8335bd2e35e11194ca8ae3a7b865159a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
