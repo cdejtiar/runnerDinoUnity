@@ -9,11 +9,11 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private Rigidbody2D rb; //Declaro
     [SerializeField] private SpriteRenderer spriteRenderer;
 
-    void Start()
+    void Update()
     {
         rb.velocity = new Vector2(1, 0) * speed;
     }
-    void OnMove(InputValue value)
+    /*void OnMove(InputValue value)
     {
         var direction = value.Get<Vector2>();
 
@@ -24,5 +24,5 @@ public class PlayerMove : MonoBehaviour
         {
             spriteRenderer.flipX = direction.x < 0;
         }
-    }
+    }*/
 }
