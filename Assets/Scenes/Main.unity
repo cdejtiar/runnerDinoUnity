@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 53516719}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1810,6 +1810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  jumpForce: 0.1
   rb: {fileID: 1062555531}
   spriteRenderer: {fileID: 1062555528}
 --- !u!114 &1062555533
@@ -2163,6 +2164,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5267688808529535178, guid: eec1037ee287dc24c89c76433c3a3b0c, type: 3}
       propertyPath: m_Name
+      value: Spikes
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267688808529535178, guid: eec1037ee287dc24c89c76433c3a3b0c, type: 3}
+      propertyPath: m_TagString
       value: Spikes
       objectReference: {fileID: 0}
     - target: {fileID: 6658380894632883356, guid: eec1037ee287dc24c89c76433c3a3b0c, type: 3}
