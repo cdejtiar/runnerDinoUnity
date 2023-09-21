@@ -16,7 +16,7 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.velocity = new Vector3(1, jumpForce); //SALTA!!!!! Falta que sea más natural.
+            rb.velocity += new Vector2(0, jumpForce); //SALTA!!!!! Falta que sea más natural.
         }
     }
     /*void OnMove(InputValue value)
