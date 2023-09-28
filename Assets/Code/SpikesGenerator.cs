@@ -5,27 +5,30 @@ using UnityEngine;
 public class SpikesGenerator : MonoBehaviour
 {
 
-    [SerializeField] private int xMin;
-    [SerializeField] private int xMax;
+    [SerializeField] private float xMin;
+    [SerializeField] private float xMax;
 
-    [SerializeField] private GameObject spikesPrefab;
+    //[SerializeField] private GameObject spikesPrefab;
+    [SerializeField] private ObstaclesTable obstaclesTable;
 
-    [SerializeField] private float spikesChance = 1;
+    //[SerializeField] private float spikesChance = 1;
 
     void Start()
     {
-        for (int x = xMin; x < xMax; x+=2)
+        for (float x = xMin; x < xMax; x++)
         {
-            if (myRandom.RandomBool(spikesChance))
-            {
-                CreateSpike(x);
-            }
+            //if (myRandom.RandomBool(spikesChance))
+            //{
+                CreateObstacle(x);
+            //}
         }
     }
 
-    private void CreateSpike(int x)
+    private void CreateObstacle(float x)
     {
-        GameObject spikesGo = Instantiate(spikesPrefab, transform);
-        spikesGo.transform.position = new Vector2(x, 0);
+        var obstacle = obstaclesTable.Evaluate();
+
+        GameObject obstacleGo = Instantiate(obstacle.Prefab, transform);
+        obstacleGo.transform.position = new Vector2(x, -4.5f);
     }
 }

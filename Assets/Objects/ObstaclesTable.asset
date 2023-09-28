@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3bbb3e362bb0462fb9c073fb2d248e0, type: 3}
+  m_Name: ObstaclesTable
+  m_EditorClassIdentifier: 
+  chances:
+  - {fileID: 11400000, guid: d4429125cfe6e4c5688e36f93940951b, type: 2}
+  - {fileID: 11400000, guid: 63380cc2c86fd4d479279a74b1366d4f, type: 2}
+  - {fileID: 11400000, guid: bdb36e62d01cd4525ab18f290a7d63ce, type: 2}
