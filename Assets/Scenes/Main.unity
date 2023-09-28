@@ -1137,8 +1137,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1165,7 +1165,9 @@ MonoBehaviour:
   speed: 4
   rb: {fileID: 1062555531}
   spriteRenderer: {fileID: 1062555528}
-  jumpForce: 50
+  jumpForce: 20
+  gravityScale: 5
+  fallGravityScale: 10
 --- !u!114 &1062555533
 MonoBehaviour:
   m_ObjectHideFlags: 0
