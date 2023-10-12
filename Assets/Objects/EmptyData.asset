@@ -15,4 +15,4 @@ MonoBehaviour:
   damage: 0
   obstacleName: Empty
   prefab: {fileID: 3243141084453570330, guid: 5023fa876bd7b42a2b557ea57ed55121, type: 3}
-  weight: 3
+  weight: 5

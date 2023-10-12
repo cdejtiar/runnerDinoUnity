@@ -13,7 +13,8 @@ public class Death : MonoBehaviour
         var startingHealth = health.Current;
         health.Damage(data.Damage);
 
-        var trigger = gameObjectPrefab.GetComponent<Collider2D>();
-        trigger.isTrigger = (health.Current != startingHealth) ? true : false; // "funciona"
+        /*var trigger = gameObjectPrefab.GetComponent<Collider2D>();
+        trigger.isTrigger = (health.Current != startingHealth) ? true : false; // Me gustaría que el trigger solo se active cuando el obstáculo es Lava
+        */
     }
 }
