@@ -8,12 +8,13 @@ public class Parallax : MonoBehaviour
 
     [SerializeField] private PlayerMove player; //Estos los ponemos como Serialized para no tener que inicializarlos con el GetComponent.
 
-    void fixedUpdate()
+    void FixedUpdate()
     {
-        //float realVelocity = player.velocity.x / depth; //Le bajo la velocidad dependiendo de lo que se mueva el player y del depth que tenga
+        float realVelocity = player.velocity.x / depth; //Le bajo la velocidad dependiendo de lo que se mueva el player y del depth que tenga
         Vector2 pos = transform.position;
+        Debug.Log(pos.x);
 
-        //pos.x -= realVelocity * Time.fixedDeltaTime; //Calculo como voy a moverlo
+        pos.x -= realVelocity * Time.fixedDeltaTime; //Calculo como voy a moverlo
 
         if (pos.x <= -13f)
         { //Calcular cuando se va de pantalla

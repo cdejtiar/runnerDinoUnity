@@ -15,15 +15,15 @@ public class PlayerMove : MonoBehaviour
 
     [SerializeField] private float distance = 0;
 
-    [SerializeField] private float jumpVelocity = 20;
-    [SerializeField] private float groundHeight = 10;
+    [SerializeField] private float jumpVelocity = 20; //Fuerza de salto
+    [SerializeField] private float groundHeight = 10; //Depende de donde está el player, donde va a aterrizar
     [SerializeField] private bool isGrounded = false;
 
-    [SerializeField] private bool isHoldingJump = false;
-    [SerializeField] private float maxHoldJump = 0.4f;
+    [SerializeField] private bool isHoldingJump = false; //Si está presionando el botón de salto
+    [SerializeField] private float maxHoldJump = 0.4f; //Cuanto tiempo puede mantener presionado el botón de salto
     [SerializeField] private float holdJumpTimer = 0f;
 
-    [SerializeField] private float jumpGroundThreshold = 0.3f;
+    [SerializeField] private float jumpGroundThreshold = 0.3f; //Distancia máxima que puede estar del suelo para poder saltar
 
     [SerializeField] private Rigidbody2D rb; //Declaro
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -33,16 +33,16 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         Vector2 pos = transform.position;
-        float groundDistance = Mathf.Abs(pos.y - groundHeight);
+        float groundDistance = Mathf.Abs(pos.y - groundHeight); //Distancia entre el player y el suelo
 
-        if (isGrounded || groundDistance <= jumpGroundThreshold)
+        if (isGrounded || groundDistance <= jumpGroundThreshold) //Si está en el suelo o está cerca del suelo
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 isGrounded = false;
-                velocity.y = jumpVelocity;
+                velocity.y = jumpVelocity; 
                 isHoldingJump = true;
-                holdJumpTimer = 0;
+                holdJumpTimer = 0; //Reseteo el timer
             }
         }
 
@@ -66,24 +66,24 @@ public class PlayerMove : MonoBehaviour
     {
         rb.velocity = new Vector2(1, 0) * speed; //Se sigue trabando
 
-        Vector2 pos = transform.position;
+        Vector2 pos = transform.position; //Posición actual del player
 
         if (!isGrounded)
         {
 
             if (isHoldingJump)
             {
-                holdJumpTimer += Time.fixedDeltaTime;
+                holdJumpTimer += Time.fixedDeltaTime; //Corre el timer
                 if (holdJumpTimer >= maxHoldJump)
                 {
-                    isHoldingJump = false;
+                    isHoldingJump = false; //Si se pasa del tiempo, deja de saltar
                 }
             }
 
-            pos.y += velocity.y * Time.fixedDeltaTime;
-            velocity.y += gravity * Time.fixedDeltaTime;
+            pos.y += velocity.y * Time.fixedDeltaTime; //Aumenta la posición en y
+            velocity.y += gravity * Time.fixedDeltaTime; //Caída
 
-            if (pos.y <= groundHeight)
+            if (pos.y <= groundHeight) //Si está en el suelo
             {
                 pos.y = groundHeight;
                 isGrounded = true;
