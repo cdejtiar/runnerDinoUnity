@@ -1,6 +1,6 @@
-using System.Net;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 
 
@@ -27,7 +27,6 @@ public class PlayerMove : MonoBehaviour
 
     [SerializeField] private float jumpGroundThreshold = 0.3f; //Distancia máxima que puede estar del suelo para poder saltar
 
-    [SerializeField] private Rigidbody2D rb; //Declaro
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     public float Distance => distance;
@@ -48,7 +47,7 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (!Input.GetKeyUp(KeyCode.Space))
         {
             isHoldingJump = false;
         }
@@ -66,8 +65,6 @@ public class PlayerMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector2(1, 0) * speed; //Se sigue trabando
-
         Vector2 pos = transform.position; //Posición actual del player
 
         if (!isGrounded)
@@ -99,21 +96,19 @@ public class PlayerMove : MonoBehaviour
                 GroundPrefab groundPrefab = hit2D.collider.GetComponent<GroundPrefab>();
                 if (ground != null || groundPrefab != null)
                 {
-                    pos.y = groundHeight;
-                    isGrounded = true;
+                    // TODO!
+                    // groundHeight = ground.Height;
                 }
 
             }
             Debug.DrawRay(rayOrigin, rayDirection * rayDistance, Color.cyan);
 
-            // if (pos.y <= groundHeight) //Si está en el suelo
-            // {
-            //     pos.y = groundHeight;
-            //     isGrounded = true;
-            // }
+            if (pos.y <= groundHeight) //Si está en el suelo
+            {
+                pos.y = groundHeight;
+                isGrounded = true;
+            }
         }
-
-        distance += velocity.x * Time.fixedDeltaTime; //Calcula la distancia que recorrimos
 
         if (isGrounded)
         { //Si estamos en el suelo
@@ -128,6 +123,8 @@ public class PlayerMove : MonoBehaviour
                 velocity.x = maxXVelocity;
             }
         }
+
+        pos.x += velocity.x * Time.fixedDeltaTime; //Calcula la distancia que recorrimos
 
         transform.position = pos;
     }
