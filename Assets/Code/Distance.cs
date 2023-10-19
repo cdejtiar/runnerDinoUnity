@@ -8,13 +8,14 @@ public class Distance : MonoBehaviour
 {
     [SerializeField] private PlayerMove player; // Acceder al script PlayerMove
     [SerializeField] private TextMeshProUGUI distanceText;
+    public float currentDistance;
 
     void Update()
     {
         if (player != null)
         {
             int distanceInt = Mathf.FloorToInt(player.Distance); //Calculo la distancia y la redondeo para un int
-
+            currentDistance = distanceInt;
             distanceText.text = distanceInt + " m"; //Pongo la distancia cada vez que se actualiza
         }
     }
