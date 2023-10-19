@@ -19,7 +19,7 @@ public class SpikesGenerator : MonoBehaviour
         {
             //if (myRandom.RandomBool(spikesChance))
             //{
-                CreateObstacle(x);
+            CreateObstacle(x);
             //}
         }
     }

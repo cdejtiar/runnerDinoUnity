@@ -1,6 +1,8 @@
+using System.Net;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 public class PlayerMove : MonoBehaviour
 {
@@ -40,7 +42,7 @@ public class PlayerMove : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 isGrounded = false;
-                velocity.y = jumpVelocity; 
+                velocity.y = jumpVelocity;
                 isHoldingJump = true;
                 holdJumpTimer = 0; //Reseteo el timer
             }
@@ -81,13 +83,34 @@ public class PlayerMove : MonoBehaviour
             }
 
             pos.y += velocity.y * Time.fixedDeltaTime; //Aumenta la posición en y
-            velocity.y += gravity * Time.fixedDeltaTime; //Caída
 
-            if (pos.y <= groundHeight) //Si está en el suelo
+            if (!isHoldingJump)
             {
-                pos.y = groundHeight;
-                isGrounded = true;
+                velocity.y += gravity * Time.fixedDeltaTime;//Caída
             }
+
+            Vector2 rayOrigin = new Vector2(pos.x + 0.7f, pos.y);
+            Vector2 rayDirection = Vector2.up;
+            float rayDistance = velocity.y * Time.fixedDeltaTime;
+            RaycastHit2D hit2D = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance);
+            if (hit2D.collider != null)
+            {
+                StartingGround ground = hit2D.collider.GetComponent<StartingGround>();
+                GroundPrefab groundPrefab = hit2D.collider.GetComponent<GroundPrefab>();
+                if (ground != null || groundPrefab != null)
+                {
+                    pos.y = groundHeight;
+                    isGrounded = true;
+                }
+
+            }
+            Debug.DrawRay(rayOrigin, rayDirection * rayDistance, Color.cyan);
+
+            // if (pos.y <= groundHeight) //Si está en el suelo
+            // {
+            //     pos.y = groundHeight;
+            //     isGrounded = true;
+            // }
         }
 
         distance += velocity.x * Time.fixedDeltaTime; //Calcula la distancia que recorrimos
