@@ -4,23 +4,29 @@ using UnityEngine;
 
 public class Parallax : MonoBehaviour
 {
-    [SerializeField] private float depth = 1; //Es como el posicionamiento en las capas (Z-Index)
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
-    [SerializeField] private PlayerMove player; //Estos los ponemos como Serialized para no tener que inicializarlos con el GetComponent.
+    public Transform target;
+    public float speed = 1f;
+    private float startPosition;
+    private float length;
+
+    void Start()
+    {
+        startPosition = transform.position.x;
+        length = spriteRenderer.bounds.size.x;
+    }
 
     void FixedUpdate()
     {
-        float realVelocity = player.velocity.x / depth; //Le bajo la velocidad dependiendo de lo que se mueva el player y del depth que tenga
-        Vector2 pos = transform.position;
-        Debug.Log(pos.x);
+        var dist = target.position.x * speed;
 
-        pos.x -= realVelocity * Time.fixedDeltaTime; //Calculo como voy a moverlo
+        transform.position = new Vector3(startPosition + dist, transform.position.y, transform.position.z);
 
-        if (pos.x <= -13f)
-        { //Calcular cuando se va de pantalla
-            pos.x = 13f; //Ponerlo donde debería regresar a la pantalla
-        }
-
-        transform.position = pos; //Lo muevo
+        var relativeCameraDist = target.position.x * (1 - speed);
+        if (relativeCameraDist > startPosition + length)
+            startPosition += length;
+        else if (relativeCameraDist < startPosition - length)
+            startPosition -= length;
     }
 }

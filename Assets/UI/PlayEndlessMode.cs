@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
 
-public class Restart : MonoBehaviour
+public class PlayEndlessMode : MonoBehaviour
 {
-    public void RestartLevel()
+    public void PlayEndless()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("PlayableLevelEndless");
