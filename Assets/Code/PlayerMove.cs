@@ -86,7 +86,7 @@ public class PlayerMove : MonoBehaviour
 
             if (!isHoldingJump)
             {
-                velocity.y += gravity * Time.fixedDeltaTime;//Caída
+                velocity.y += gravity * Time.fixedDeltaTime; //Caída
             }
 
             Vector2 rayOrigin = new Vector2(pos.x + 0.7f, pos.y);
