@@ -15,6 +15,10 @@ public class SpikesGenerator : MonoBehaviour
 
     void Start()
     {
+        // crea 20 obstaculos
+            // los primeros 5 o 10 son pasto
+            // los otros random
+
         for (float x = xMin; x < xMax; x++)
         {
             //if (myRandom.RandomBool(spikesChance))
@@ -30,5 +34,11 @@ public class SpikesGenerator : MonoBehaviour
 
         GameObject obstacleGo = Instantiate(obstacle.Prefab, transform);
         obstacleGo.transform.position = new Vector2(x, -4.5f);
+    }
+
+    void FixedUpdate()
+    {
+        // cada 10 en la player.transform.position.x
+            // creo una tanda mas de obstaculos (por ej, 10)
     }
 }
