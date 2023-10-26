@@ -15,9 +15,12 @@ public class Health : MonoBehaviour
 
     public int MaxHealth => maxHealth;
 
+    private bool hasHealerBeenCalled = false;
+
     public void Start()
     {
         current = maxHealth;
+        Debug.Log("Health inicial: " + current);
     }
     public void Damage(int amount)
     {
@@ -25,10 +28,29 @@ public class Health : MonoBehaviour
 
         onChange.Invoke();
 
+        Debug.Log("Health at Damage: " + current);
+
         if (current <= 0)
         {
             Instantiate(gameOverWindowPrefab, canvasTransform);
             Time.timeScale = 0;
+        }
+    }
+
+    public void Healer(int amount)
+    {
+        if(!hasHealerBeenCalled){
+            current += amount;
+            hasHealerBeenCalled = true;
+
+            if (current > maxHealth)
+            {
+                current = maxHealth;
+            }
+
+            Debug.Log("Health at Healer: " + current);
+
+            onChange.Invoke();
         }
     }
 }
