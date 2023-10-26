@@ -1,3 +1,4 @@
+using System.Net.Sockets;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
@@ -6,7 +7,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField] private float speed = 4;
+    //[SerializeField] private float speed = 4;
     [SerializeField] public Vector2 velocity;
     [SerializeField] private float maxXVelocity = 100;
 
@@ -28,6 +29,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float jumpGroundThreshold = 0.3f; //Distancia máxima que puede estar del suelo para poder saltar
 
     [SerializeField] private SpriteRenderer spriteRenderer;
+
+    [SerializeField] private EndPoint endPoint;
 
     public float Distance => distance;
 
@@ -86,23 +89,6 @@ public class PlayerMove : MonoBehaviour
                 velocity.y += gravity * Time.fixedDeltaTime; //Caída
             }
 
-            Vector2 rayOrigin = new Vector2(pos.x + 0.7f, pos.y);
-            Vector2 rayDirection = Vector2.up;
-            float rayDistance = velocity.y * Time.fixedDeltaTime;
-            RaycastHit2D hit2D = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance);
-            if (hit2D.collider != null)
-            {
-                StartingGround ground = hit2D.collider.GetComponent<StartingGround>();
-                GroundPrefab groundPrefab = hit2D.collider.GetComponent<GroundPrefab>();
-                if (ground != null || groundPrefab != null)
-                {
-                    // TODO!
-                    // groundHeight = ground.Height;
-                }
-
-            }
-            Debug.DrawRay(rayOrigin, rayDirection * rayDistance, Color.cyan);
-
             if (pos.y <= groundHeight) //Si está en el suelo
             {
                 pos.y = groundHeight;
@@ -122,6 +108,10 @@ public class PlayerMove : MonoBehaviour
             { //Evito que tenga velocidad que aumente infinitamente.
                 velocity.x = maxXVelocity;
             }
+        }
+
+        if(pos.x > 82){ //Gané?
+            endPoint.Winner();
         }
 
         pos.x += velocity.x * Time.fixedDeltaTime; //Calcula la distancia que recorrimos
