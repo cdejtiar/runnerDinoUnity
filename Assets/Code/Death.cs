@@ -9,7 +9,7 @@ public class Death : MonoBehaviour
     [SerializeField] private Obstacle data;
     private void OnCollisionEnter2D(Collision2D other)
     {
-        var health = other.gameObject.GetComponent<Health>(); 
+        var health = other.gameObject.GetComponent<Health>();
         var startingHealth = health.Current;
         health.Damage(data.Damage);
 

@@ -21,6 +21,7 @@ public class Health : MonoBehaviour
     }
     public void Damage(int amount)
     {
+
         current -= amount;
 
         onChange.Invoke();
