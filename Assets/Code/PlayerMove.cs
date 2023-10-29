@@ -134,6 +134,7 @@ public class PlayerMove : MonoBehaviour
             { //Evito que tenga velocidad que aumente infinitamente.
                 velocity.x = maxXVelocity;
             }
+
             Vector2 rayOrigin = new Vector2(pos.x + 0.8f, pos.y - 0.23f);
             Vector2 rayDirection = Vector2.up;
             float rayDistance = velocity.y * Time.fixedDeltaTime;
@@ -145,15 +146,16 @@ public class PlayerMove : MonoBehaviour
             }
             else
             {
-                SpikesPrefab spikesPrefab = hit2D.collider.GetComponent<SpikesPrefab>();
+                Damager damager = hit2D.collider.GetComponent<Damager>();
                 LavaPrefab lavaPrefab = hit2D.collider.GetComponent<LavaPrefab>();
 
-                if (spikesPrefab != null || lavaPrefab != null)
-                {
-                    var hit = gameObject.GetComponent<Health>();
 
+                if (damager != null || lavaPrefab != null)
+                {
+                    damager.OnCollisionEnter2D(null);
+                    Debug.Log(damager);
                     //hit.OnCollisionEnter2D();
-                    //Debug.Log(hit.Damage(25));
+
                 }
             }
             Debug.DrawRay(rayOrigin, rayDirection * rayDistance, Color.yellow);
