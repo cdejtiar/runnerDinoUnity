@@ -95,10 +95,8 @@ public class PlayerMove : MonoBehaviour
                 StartingGround ground = hit2D.collider.GetComponent<StartingGround>();
                 GroundPrefab groundPrefab = hit2D.collider.GetComponent<GroundPrefab>();
                 SpikesPrefab spikesPrefab = hit2D.collider.GetComponent<SpikesPrefab>();
-                LavaPrefab lavaPrefab = hit2D.collider.GetComponent<LavaPrefab>();
 
-
-                if (ground != null || groundPrefab != null || spikesPrefab != null || lavaPrefab != null)
+                if (ground != null || groundPrefab != null || spikesPrefab != null)
                 {
                     /*Debug.Log(groundPrefab.groundHeight);
                     groundHeight = groundPrefab.groundHeight;*/
@@ -108,7 +106,7 @@ public class PlayerMove : MonoBehaviour
                     // TODO!
                     // groundHeight = ground.Height;
                 }
-                if (spikesPrefab != null || lavaPrefab != null)
+                if (spikesPrefab != null)
                 {
                     //Debug.Log("hit");
                 }
@@ -134,31 +132,6 @@ public class PlayerMove : MonoBehaviour
             { //Evito que tenga velocidad que aumente infinitamente.
                 velocity.x = maxXVelocity;
             }
-
-            Vector2 rayOrigin = new Vector2(pos.x + 0.8f, pos.y - 0.23f);
-            Vector2 rayDirection = Vector2.up;
-            float rayDistance = velocity.y * Time.fixedDeltaTime;
-            RaycastHit2D hit2D = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance);
-            if (hit2D.collider == null)
-            {
-                isGrounded = false;
-
-            }
-            else
-            {
-                Damager damager = hit2D.collider.GetComponent<Damager>();
-                LavaPrefab lavaPrefab = hit2D.collider.GetComponent<LavaPrefab>();
-
-
-                if (damager != null || lavaPrefab != null)
-                {
-                    damager.OnCollisionEnter2D(null);
-                    Debug.Log(damager);
-                    //hit.OnCollisionEnter2D();
-
-                }
-            }
-            Debug.DrawRay(rayOrigin, rayDirection * rayDistance, Color.yellow);
         }
 
         distance = pos.x += velocity.x * Time.fixedDeltaTime; //Calcula la distancia que recorrimos
