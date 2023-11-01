@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField] private float speed = 4;
+    /*[SerializeField] private float speed = 4;*/
     [SerializeField] public Vector2 velocity;
     [SerializeField] private float maxXVelocity = 100;
 
@@ -86,28 +86,38 @@ public class PlayerMove : MonoBehaviour
                 velocity.y += gravity * Time.fixedDeltaTime; //Caída
             }
 
-            Vector2 rayOrigin = new Vector2(pos.x + 0.7f, pos.y);
-            Vector2 rayDirection = Vector2.up;
+            Vector2 rayOrigin = new Vector2(pos.x + 0.7f, pos.y - 0.9f);
+            Vector2 rayDirection = Vector2.down;
             float rayDistance = velocity.y * Time.fixedDeltaTime;
             RaycastHit2D hit2D = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance);
             if (hit2D.collider != null)
             {
                 StartingGround ground = hit2D.collider.GetComponent<StartingGround>();
                 GroundPrefab groundPrefab = hit2D.collider.GetComponent<GroundPrefab>();
-                if (ground != null || groundPrefab != null)
+                SpikesPrefab spikesPrefab = hit2D.collider.GetComponent<SpikesPrefab>();
+
+                if (ground != null || groundPrefab != null || spikesPrefab != null)
                 {
+                    /*Debug.Log(groundPrefab.groundHeight);
+                    groundHeight = groundPrefab.groundHeight;*/
+
+                    pos.y = groundHeight;
+                    isGrounded = true;
                     // TODO!
                     // groundHeight = ground.Height;
                 }
-
+                if (spikesPrefab != null)
+                {
+                    //Debug.Log("hit");
+                }
             }
-            Debug.DrawRay(rayOrigin, rayDirection * rayDistance, Color.cyan);
-
-            if (pos.y <= groundHeight) //Si está en el suelo
-            {
-                pos.y = groundHeight;
-                isGrounded = true;
-            }
+            Debug.DrawRay(rayOrigin, rayDirection * rayDistance, Color.red);
+            /*
+                        if (pos.y <= groundHeight) //Si está en el suelo
+                        {
+                            pos.y = groundHeight;
+                            isGrounded = true;
+                        }*/
         }
 
         if (isGrounded)
@@ -124,7 +134,7 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-        pos.x += velocity.x * Time.fixedDeltaTime; //Calcula la distancia que recorrimos
+        distance = pos.x += velocity.x * Time.fixedDeltaTime; //Calcula la distancia que recorrimos
 
         transform.position = pos;
     }

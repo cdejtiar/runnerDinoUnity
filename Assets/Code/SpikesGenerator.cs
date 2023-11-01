@@ -16,8 +16,8 @@ public class SpikesGenerator : MonoBehaviour
     void Start()
     {
         // crea 20 obstaculos
-            // los primeros 5 o 10 son pasto
-            // los otros random
+        // los primeros 5 o 10 son pasto
+        // los otros random
 
         for (float x = xMin; x < xMax; x++)
         {
@@ -39,6 +39,6 @@ public class SpikesGenerator : MonoBehaviour
     void FixedUpdate()
     {
         // cada 10 en la player.transform.position.x
-            // creo una tanda mas de obstaculos (por ej, 10)
+        // creo una tanda mas de obstaculos (por ej, 10)
     }
 }
