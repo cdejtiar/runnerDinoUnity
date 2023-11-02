@@ -29,6 +29,8 @@ public class PlayerMove : MonoBehaviour
 
     [SerializeField] private SpriteRenderer spriteRenderer;
 
+    [SerializeField] private Animator animator;
+
     public float Distance => distance;
 
     void Update()
@@ -80,6 +82,7 @@ public class PlayerMove : MonoBehaviour
             }
 
             pos.y += velocity.y * Time.fixedDeltaTime; //Aumenta la posición en y
+            animator.SetBool("jumping", groundHeight < pos.y);
 
             if (!isHoldingJump)
             {
@@ -103,7 +106,6 @@ public class PlayerMove : MonoBehaviour
 
                     pos.y = groundHeight;
                     isGrounded = true;
-                    // TODO!
                     // groundHeight = ground.Height;
                 }
                 if (spikesPrefab != null)
