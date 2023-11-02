@@ -40,7 +40,6 @@ public class PlayerMove : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-
                 isGrounded = false;
                 velocity.y = jumpVelocity;
                 isHoldingJump = true;
@@ -87,7 +86,7 @@ public class PlayerMove : MonoBehaviour
                 velocity.y += gravity * Time.fixedDeltaTime; //Caída
             }
 
-            Vector2 rayOrigin = new Vector2(pos.x + 0.7f, pos.y - 0.9f);
+            Vector2 rayOrigin = new Vector2(pos.x + 0.7f, pos.y - 0.3f);
             Vector2 rayDirection = Vector2.down;
             float rayDistance = velocity.y * Time.fixedDeltaTime;
             RaycastHit2D hit2D = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance);
