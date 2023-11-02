@@ -357,10 +357,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8380841791665624759}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 529ba8f2329b4254298fd40d89bba301, type: 3}
+  m_Script: {fileID: 11500000, guid: b6df3ce0058b544b08818dc60ce3371f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectPrefab: {fileID: 5267688808529535178}
+  gameObjectPrefab: {fileID: 8380841791665624759}
   data: {fileID: 11400000, guid: d4429125cfe6e4c5688e36f93940951b, type: 2}
 --- !u!61 &1824769346615935154
 BoxCollider2D:

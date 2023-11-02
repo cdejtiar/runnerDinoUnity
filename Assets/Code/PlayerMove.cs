@@ -40,6 +40,7 @@ public class PlayerMove : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+
                 isGrounded = false;
                 velocity.y = jumpVelocity;
                 isHoldingJump = true;

@@ -7,15 +7,17 @@ public class EndPoint : MonoBehaviour
     [SerializeField] private GameObject winnerPrefab;
     [SerializeField] private Transform canvasTransform;
 
-    private bool hasWinnerBeenCalled = false; // Variable para controlar si Winner se ha llamado
+    //private bool hasWinnerBeenCalled = false; // Variable para controlar si Winner se ha llamado
 
-    public void Winner()
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (!hasWinnerBeenCalled)
+
+        if (other.tag == "Player")
         {
+
             Instantiate(winnerPrefab, canvasTransform);
             Time.timeScale = 0;
-            hasWinnerBeenCalled = true; // Marca que Winner se ha llamado
+            //hasWinnerBeenCalled = true; // Marca que Winner se ha llamado
         }
     }
 }
