@@ -717,10 +717,17 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
+<<<<<<< HEAD
   cloudProjectId: 29a52590-6405-46d7-a7e3-2121768683b3
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: runnerDino 2023-11-01_23-52-36
+=======
+  cloudProjectId: b0f69b19-03ec-4605-90c3-69dc61f59abb
+  framebufferDepthMemorylessMode: 0
+  qualitySettingsNames: []
+  projectName: runnerDino
+>>>>>>> 38360a4eef817a32b0038b8a2ac8127b3d31a4e7
   organizationId: cdejtiar
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
