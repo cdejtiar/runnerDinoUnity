@@ -10,48 +10,68 @@ public class Health : MonoBehaviour
     [SerializeField] private UnityEngine.Events.UnityEvent onChange;
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int current = 1;
+    private float shieldDuration = .05f;
+    private float shieldTimer = 0.0f;
+
+    private int tempCurrent;
 
     public int Current => current;
 
     public int MaxHealth => maxHealth;
 
-    private bool hasHealerBeenCalled = false;
+    private bool hasShieldBeenCalled = false;
 
     public void Start()
     {
         current = maxHealth;
-        Debug.Log("Health inicial: " + current);
+
     }
     public void Damage(int amount)
     {
+        if (!hasShieldBeenCalled)
+        {
+            current -= amount;
 
-        current -= amount;
+            onChange.Invoke();
+
+            if (current <= 0)
+            {
+                Instantiate(gameOverWindowPrefab, canvasTransform);
+                Time.timeScale = 0;
+            }
+        }
+        else
+        {
+            Shield();
+        }
+
+
+
+    }
+
+    public void Shield()
+    {
+
+        hasShieldBeenCalled = true;
+        tempCurrent = current;
+        shieldTimer += Time.fixedDeltaTime;
+        if (shieldTimer >= shieldDuration)
+        {
+            hasShieldBeenCalled = false;
+        }
+
+    }
+    public void Healer(int amount)
+    {
+
+        current += amount;
+
+        if (current > maxHealth)
+        {
+            current = maxHealth;
+        }
 
         onChange.Invoke();
 
-        Debug.Log("Health at Damage: " + current);
-
-        if (current <= 0)
-        {
-            Instantiate(gameOverWindowPrefab, canvasTransform);
-            Time.timeScale = 0;
-        }
-    }
-
-    public void Healer(int amount)
-    {
-        if(!hasHealerBeenCalled){
-            current += amount;
-            hasHealerBeenCalled = true;
-
-            if (current > maxHealth)
-            {
-                current = maxHealth;
-            }
-
-            Debug.Log("Health at Healer: " + current);
-
-            onChange.Invoke();
-        }
     }
 }

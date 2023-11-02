@@ -11,8 +11,14 @@ public class PowerUp : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-
-            other.GetComponent<Health>().Healer(cantidadARecuperar);
+            if (gameObject.tag == "Healing")
+            {
+                other.GetComponent<Health>().Healer(cantidadARecuperar);
+            }
+            else if (gameObject.tag == "Shield")
+            {
+                other.GetComponent<Health>().Shield();
+            }
 
             // Destruye el power-up para que no se pueda recoger otra vez
             Destroy(gameObject);
