@@ -134,6 +134,11 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
+        //Solo para nivel hecho a mano
+        /*if(pos.x > 82){ //Gané?
+            endPoint.Winner();
+        }*/
+
         distance = pos.x += velocity.x * Time.fixedDeltaTime; //Calcula la distancia que recorrimos
 
         transform.position = pos;
