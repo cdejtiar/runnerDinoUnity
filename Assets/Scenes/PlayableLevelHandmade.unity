@@ -4874,6 +4874,14 @@ PrefabInstance:
       propertyPath: distanceText
       value: 
       objectReference: {fileID: 359304220}
+    - target: {fileID: 6656292604964087028, guid: 2d2f4b863b0764d688302deb99743474, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1062555535}
+    - target: {fileID: 6656292604964087028, guid: 2d2f4b863b0764d688302deb99743474, type: 3}
+      propertyPath: distanceText
+      value: 
+      objectReference: {fileID: 359304220}
     - target: {fileID: 6905305857106428880, guid: 2d2f4b863b0764d688302deb99743474, type: 3}
       propertyPath: m_Name
       value: Distance
