@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 122375119873516974}
   - component: {fileID: -5347157909351786823}
   m_Layer: 5
-  m_Name: gameOverWindowPrefab
+  m_Name: gameOverWindowEndless
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
