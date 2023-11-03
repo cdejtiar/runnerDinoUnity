@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2fdd1380c88b4204bf77758af16f5f4, type: 3}
-  m_Name: EmptyData
+  m_Name: ShieldData
   m_EditorClassIdentifier: 
   damage: 0
-  obstacleName: Empty
-  prefab: {fileID: 3243141084453570330, guid: 81841a5504d4fe2499b43ddb097560bf, type: 3}
-  weight: 88
+  obstacleName: 
+  prefab: {fileID: 3243141084453570330, guid: 5023fa876bd7b42a2b557ea57ed55121, type: 3}
+  weight: 1

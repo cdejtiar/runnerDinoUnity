@@ -98,8 +98,10 @@ public class PlayerMove : MonoBehaviour
                 StartingGround ground = hit2D.collider.GetComponent<StartingGround>();
                 GroundPrefab groundPrefab = hit2D.collider.GetComponent<GroundPrefab>();
                 SpikesPrefab spikesPrefab = hit2D.collider.GetComponent<SpikesPrefab>();
+                HealingPrefab healingPrefab = hit2D.collider.GetComponent<HealingPrefab>();
+                ShieldPrefab shieldPrefab = hit2D.collider.GetComponent<ShieldPrefab>();
 
-                if (ground != null || groundPrefab != null || spikesPrefab != null)
+                if (ground != null || groundPrefab != null || spikesPrefab != null || healingPrefab != null || shieldPrefab != null)
                 {
                     /*Debug.Log(groundPrefab.groundHeight);
                     groundHeight = groundPrefab.groundHeight;*/

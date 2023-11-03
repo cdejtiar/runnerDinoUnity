@@ -10,7 +10,7 @@ public class Health : MonoBehaviour
     [SerializeField] private UnityEngine.Events.UnityEvent onChange;
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int current = 1;
-    private float shieldDuration = .05f;
+    private float shieldDuration = 0.1f;
     private float shieldTimer = 0.0f;
 
     private int tempCurrent;
