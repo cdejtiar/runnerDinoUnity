@@ -6,12 +6,15 @@ public class PowerUp : MonoBehaviour
 {
     private int cantidadARecuperar = 50; // Cantidad de salud que se recupera al recoger el power-up
 
+    [SerializeField] private Animator animator;
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
             if (gameObject.tag == "Healing")
             {
+                animator.SetBool("healing", gameObject.tag == "Healing");
                 other.GetComponent<Health>().Healer(cantidadARecuperar);
             }
             else if (gameObject.tag == "Shield")

@@ -1,9 +1,11 @@
 fileFormatVersion: 2
-guid: e569a7d34844e473895592a09f520d79
+guid: 85949e8c2e2c6d84b805e43fe95ee004
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - distanceCalculator: {instanceID: 0}
+  - distanceText: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
