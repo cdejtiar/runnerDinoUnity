@@ -2,15 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpikesGenerator : MonoBehaviour
+public class LevelGenerator : MonoBehaviour
 {
-
-    //[SerializeField] private float xMin;
-    //[SerializeField] private float xMax;
-
-    //[SerializeField] private GameObject spikesPrefab;
-
-
     [SerializeField] private ObstaclesTable obstaclesTable;
     [SerializeField] private PlayerMove player;
 
@@ -18,8 +11,6 @@ public class SpikesGenerator : MonoBehaviour
     private float xMax = 10;
 
     private float posXsave = 0;
-
-    //[SerializeField] private float spikesChance = 1;
 
     void Start()
     {
@@ -36,15 +27,6 @@ public class SpikesGenerator : MonoBehaviour
                 CreateInicialGround(x);
             }
         }
-        /*for (float x = xMin; x < xMax; x++)
-    {
-        //if (myRandom.RandomBool(spikesChance))
-        //{
-        CreateObstacle(x);
-        //}
-    }-*/
-        /*
-        **/
     }
 
     private void CreateInicialGround(float x)
@@ -75,10 +57,8 @@ public class SpikesGenerator : MonoBehaviour
 
         if (xPosDiff >= 10.0f)
         {
-            // Si la diferencia es mayor o igual a 10, genera obstáculos adicionales
             GenerateObstacles();
 
-            // Actualiza la posición guardada
             posXsave = pos.x;
         }
         // cada 10 en la player.transform.position.x

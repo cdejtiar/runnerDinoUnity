@@ -19,12 +19,4 @@ public class Distance : MonoBehaviour
             distanceText.text = distanceInt + " m"; //Pongo la distancia cada vez que se actualiza
         }
     }
-    /*[SerializeField] private GameObject player; //PREGUNTAR!!! No nos funciono con el serializeField para inicializarlo desde Unity Editor.
-    [SerializeField] private GameObject distanceText; //Estos los ponemos como Serialized para no tener que inicializarlos con el GetComponent.
-
-    void Update()
-    {
-        int distance = Mathf.FloorToInt(player.distance); //Calculo la distancia y la redondeo para un int
-        distanceText.text = distance + " m"; //Pongo la distancia cada vez que se actualiza
-    }*/
 }

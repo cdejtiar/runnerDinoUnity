@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    private int cantidadARecuperar = 50; // Cantidad de salud que se recupera al recoger el power-up
+    private int healAmount = 50; // Cantidad de salud que se recupera al recoger el power-up
 
     [SerializeField] private Animator animator;
 
@@ -14,7 +14,7 @@ public class PowerUp : MonoBehaviour
         {
             if (gameObject.tag == "Healing")
             {
-                other.GetComponent<Health>().Healer(cantidadARecuperar);
+                other.GetComponent<Health>().Healer(healAmount);
                 animator.SetBool("isHealingMoving", true);
             }
             else if (gameObject.tag == "Shield")

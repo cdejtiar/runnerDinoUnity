@@ -6,22 +6,21 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    /*[SerializeField] private float speed = 4;*/
     [SerializeField] public Vector2 velocity;
-    [SerializeField] private float maxXVelocity = 100;
+    [SerializeField] private float maxXVelocity = 80;
 
-    [SerializeField] private float gravity = -100;
+    [SerializeField] private float gravity = -70;
 
-    [SerializeField] private float acceleration = 10;
-    [SerializeField] private float maxAcceleration = 10;
+    [SerializeField] private float acceleration = 1;
+    [SerializeField] private float maxAcceleration = 1;
 
     [SerializeField] private float distance = 0;
 
-    [SerializeField] private float jumpVelocity = 20; //Fuerza de salto
-    [SerializeField] private float groundHeight = 10; //Depende de donde está el player, donde va a aterrizar
-    [SerializeField] private bool isGrounded = false;
+    [SerializeField] private float jumpVelocity = 16; //Fuerza de salto
+    [SerializeField] private float groundHeight = -2.435f; //Depende de donde está el player, donde va a aterrizar
+    private bool isGrounded = false;
 
-    [SerializeField] private bool isHoldingJump = false; //Si está presionando el botón de salto
+    private bool isHoldingJump = false; //Si está presionando el botón de salto
     [SerializeField] private float maxHoldJump = 0.4f; //Cuanto tiempo puede mantener presionado el botón de salto
     [SerializeField] private float holdJumpTimer = 0f;
 
@@ -53,16 +52,6 @@ public class PlayerMove : MonoBehaviour
         {
             isHoldingJump = false;
         }
-        /*rb.velocity = new Vector2(1, 0) * speed;
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            rb.velocity += new Vector2(1, jumpForce) * speed; //SALTA!!!!! Falta que sea más natural.
-            /*if (Mathf.Abs(rb.velocity.y) < 0.01f) // Solo permitir saltos cuando la velocidad vertical sea baja (en el suelo)
-            {
-                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            }*/
-        //}
     }
 
     void FixedUpdate()
@@ -103,30 +92,20 @@ public class PlayerMove : MonoBehaviour
 
                 if (ground != null || groundPrefab != null || spikesPrefab != null || healingPrefab != null || shieldPrefab != null)
                 {
-                    /*Debug.Log(groundPrefab.groundHeight);
-                    groundHeight = groundPrefab.groundHeight;*/
 
                     pos.y = groundHeight;
                     isGrounded = true;
-                    // groundHeight = ground.Height;
                 }
                 if (spikesPrefab != null)
                 {
-                    //Debug.Log("hit");
+
                 }
             }
             Debug.DrawRay(rayOrigin, rayDirection * rayDistance, Color.red);
-            /*
-                        if (pos.y <= groundHeight) //Si está en el suelo
-                        {
-                            pos.y = groundHeight;
-                            isGrounded = true;
-                        }*/
         }
 
         if (isGrounded)
         { //Si estamos en el suelo
-
             float velocityRatio = velocity.x / maxXVelocity; //Va de 0 a 1
             acceleration = maxAcceleration * (1 - velocityRatio); //Hace que aumente la velocidad de forma lenta mientras que la aceleración baja, también de forma lenta
 
@@ -137,11 +116,6 @@ public class PlayerMove : MonoBehaviour
                 velocity.x = maxXVelocity;
             }
         }
-
-        //Solo para nivel hecho a mano
-        /*if(pos.x > 82){ //Gané?
-            endPoint.Winner();
-        }*/
 
         distance = pos.x += velocity.x * Time.fixedDeltaTime; //Calcula la distancia que recorrimos
 

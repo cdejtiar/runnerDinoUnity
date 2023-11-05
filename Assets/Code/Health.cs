@@ -51,7 +51,6 @@ public class Health : MonoBehaviour
 
     public void Shield()
     {
-
         hasShieldBeenCalled = true;
         tempCurrent = current;
         shieldTimer += Time.fixedDeltaTime;
@@ -59,11 +58,9 @@ public class Health : MonoBehaviour
         {
             hasShieldBeenCalled = false;
         }
-
     }
     public void Healer(int amount)
     {
-
         current += amount;
 
         if (current > maxHealth)
@@ -72,6 +69,5 @@ public class Health : MonoBehaviour
         }
 
         onChange.Invoke();
-
     }
 }
