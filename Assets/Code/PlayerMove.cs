@@ -92,13 +92,8 @@ public class PlayerMove : MonoBehaviour
 
                 if (ground != null || groundPrefab != null || spikesPrefab != null || healingPrefab != null || shieldPrefab != null)
                 {
-
                     pos.y = groundHeight;
                     isGrounded = true;
-                }
-                if (spikesPrefab != null)
-                {
-
                 }
             }
             Debug.DrawRay(rayOrigin, rayDirection * rayDistance, Color.red);

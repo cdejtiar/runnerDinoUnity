@@ -1246,8 +1246,6 @@ MonoBehaviour:
   distance: 0
   jumpVelocity: 16
   groundHeight: -2.435
-  isGrounded: 0
-  isHoldingJump: 0
   maxHoldJump: 0.4
   holdJumpTimer: 0
   jumpGroundThreshold: 0.3
