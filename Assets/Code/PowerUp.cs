@@ -14,16 +14,28 @@ public class PowerUp : MonoBehaviour
         {
             if (gameObject.tag == "Healing")
             {
-                animator.SetBool("healing", gameObject.tag == "Healing");
                 other.GetComponent<Health>().Healer(cantidadARecuperar);
+                animator.SetBool("isHealingMoving", true);
             }
             else if (gameObject.tag == "Shield")
             {
                 other.GetComponent<Health>().Shield();
+                animator.SetBool("isShieldMoving", true);
             }
 
             // Destruye el power-up para que no se pueda recoger otra vez
             Destroy(gameObject);
+        }
+    }
+
+    void OnMove()
+    {
+        if (gameObject.tag == "Healing")
+        {
+            animator.SetBool("isHealingMoving", false);
+        } else if (gameObject.tag == "Shield")
+        {
+            animator.SetBool("isShieldMoving", false);
         }
     }
 }

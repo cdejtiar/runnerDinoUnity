@@ -15,4 +15,4 @@ MonoBehaviour:
   damage: 25
   obstacleName: Spikes
   prefab: {fileID: 5267688808529535178, guid: 3e43375097cc3425ca793d94ff5bfb8e, type: 3}
-  weight: 20
+  weight: 10
