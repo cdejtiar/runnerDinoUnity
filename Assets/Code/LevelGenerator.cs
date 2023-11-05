@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+    private const float TILE_HEIGHT = -4.5f;
+
     [SerializeField] private ObstaclesTable obstaclesTable;
     [SerializeField] private PlayerMove player;
 
@@ -22,20 +24,23 @@ public class LevelGenerator : MonoBehaviour
         // crea 20 obstaculos
         // los primeros 5 o 10 son pasto
         // los otros random
-        if (pos.x == -10f)
+
+        // if (pos.x == -10f)
+        // {
+        for (float x = pos.x; x < xMax; x++)
         {
-            for (float x = pos.x; x < xMax; x++)
-            {
-                CreateInicialGround(x);
-                obstaclePosXsave = x;
-            }
+            CreateInicialGround(x);
+            // obstaclePosXsave = x;
         }
+        obstaclePosXsave = xMax - 1;
+        // }
     }
 
     private void CreateInicialGround(float x)
     {
+        // Se puede reutilizar con CreateObstacle
         var ground = Instantiate(groundPrefab, transform);
-        ground.transform.position = new Vector2(x, -4.5f);
+        ground.transform.position = new Vector2(x, TILE_HEIGHT);
     }
 
     private void CreateObstacle(float x)
@@ -43,18 +48,21 @@ public class LevelGenerator : MonoBehaviour
         var obstacle = obstaclesTable.Evaluate();
 
         GameObject obstacleGo = Instantiate(obstacle.Prefab, transform);
-        obstacleGo.transform.position = new Vector2(x, -4.5f);
+        obstacleGo.transform.position = new Vector2(x, TILE_HEIGHT);
     }
-    private void GenerateObstacles()
+
+    private void GenerateObstacles() // Batch    Chunk
     {
-        if (obstaclePosXsave >= 9f)
+        // if (obstaclePosXsave >= 9f)
+        // {
+        for (float x = obstaclePosXsave; x < playerPosXsave + xMax; x++)
         {
-            for (float x = obstaclePosXsave; x < playerPosXsave + xMax; x++)
-            {
-                CreateObstacle(x + 30f);
-                obstaclePosXsave = x;
-            }
+            CreateObstacle(x);// + 30f);
+            // obstaclePosXsave = x;
         }
+        obstaclePosXsave = playerPosXsave + xMax - 1;
+
+        // }
         /*else if (obstaclePosXsave == 9f)
         {
             for (float x = obstaclePosXsave; x < playerPosXsave + xMax; x++)
@@ -78,5 +86,12 @@ public class LevelGenerator : MonoBehaviour
         }
         // cada 10 en la player.transform.position.x
         // creo una tanda mas de obstaculos (por ej, 10)
+    }
+
+    void OnDrawGizmos()
+    {
+        // dibujar playerPosXsave y obstaclePosXsave
+        // Gizmos.color = Color.blue;
+        // Gizmos.DrawCube()
     }
 }

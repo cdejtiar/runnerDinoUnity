@@ -1,9 +1,9 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class GameOverWindow : MonoBehaviour
 {
-    public Distance distanceCalculator;
+    public DistanceCounter distanceCalculator;
     public TextMeshProUGUI distanceText;
 
     void Start()

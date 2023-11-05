@@ -1,16 +1,15 @@
-using System.Net.Mime;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
-public class Distance : MonoBehaviour
+public class DistanceCounter : MonoBehaviour
 {
     [SerializeField] private PlayerMove player; // Acceder al script PlayerMove
     [SerializeField] private TextMeshProUGUI distanceText;
     public float currentDistance;
 
-    void Update()
+    void FixedUpdate()
     {
         if (player != null)
         {

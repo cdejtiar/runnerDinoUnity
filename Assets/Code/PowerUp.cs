@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUp : MonoBehaviour
+public abstract class PowerUp : MonoBehaviour
 {
     private int healAmount = 50; // Cantidad de salud que se recupera al recoger el power-up
 
@@ -10,7 +10,7 @@ public class PowerUp : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player")  // Porque lo dijo ChatGPT?
         {
             if (gameObject.tag == "Healing")
             {
@@ -28,14 +28,17 @@ public class PowerUp : MonoBehaviour
         }
     }
 
-    void OnMove()
-    {
-        if (gameObject.tag == "Healing")
-        {
-            animator.SetBool("isHealingMoving", false);
-        } else if (gameObject.tag == "Shield")
-        {
-            animator.SetBool("isShieldMoving", false);
-        }
-    }
+    protected abstract void DoPowerUp();
+
+    // void OnMove()
+    // {
+    //     if (gameObject.tag == "Healing")
+    //     {
+    //         animator.SetBool("isHealingMoving", false);
+    //     }
+    //     else if (gameObject.tag == "Shield")
+    //     {
+    //         animator.SetBool("isShieldMoving", false);
+    //     }
+    // }
 }
