@@ -28,7 +28,6 @@ public class LevelGenerator : MonoBehaviour
             {
                 CreateInicialGround(x);
                 obstaclePosXsave = x;
-                Debug.Log(x);
             }
         }
     }
