@@ -4,65 +4,71 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+    private const float TILE_HEIGHT = -4.5f;
     [SerializeField] private ObstaclesTable obstaclesTable;
     [SerializeField] private PlayerMove player;
 
     [SerializeField] private GroundPrefab groundPrefab;
-    private float xMax = 10;
+    private float batch = 20f; //largo de cada tanda
 
-    private float playerPosXsave = 0;
+    private float playerPosXsave = 0f; //guarda la posicion del jugador en cada batch
 
-    private float obstaclePosXsave = 0;
+    private float obstaclePosXsave = 0f; //guarda la posicion del ultimo obstaculo generado en cada batch
+
 
 
     void Start()
     {
         Vector2 pos = player.transform.position;
         playerPosXsave = pos.x;
-        // crea 20 obstaculos
-        // los primeros 5 o 10 son pasto
-        // los otros random
+
         if (pos.x == -10f)
         {
-            for (float x = pos.x; x < xMax; x++)
+            for (float x = pos.x; x < batch; x++)
             {
-                CreateInicialGround(x);
-                obstaclePosXsave = x;
+                CreateObstacle(x, false);
             }
+            obstaclePosXsave = batch - 1;
         }
     }
 
-    private void CreateInicialGround(float x)
+    private void CreateObstacle(float x, bool isObstacle)
+    {
+
+        if (isObstacle)
+        {
+            var obstacle = obstaclesTable.Evaluate();
+            GameObject gameObject = Instantiate(obstacle.Prefab, transform);
+            gameObject.transform.position = new Vector2(x, TILE_HEIGHT);
+        }
+        else
+        {
+            var ground = Instantiate(groundPrefab, transform);
+            ground.transform.position = new Vector2(x, TILE_HEIGHT);
+        }
+
+
+    }
+    /*private void CreateInicialGround(float x)
     {
         var ground = Instantiate(groundPrefab, transform);
-        ground.transform.position = new Vector2(x, -4.5f);
-    }
+        ground.transform.position = new Vector2(x, TILE_HEIGHT);
+    }*/
 
-    private void CreateObstacle(float x)
-    {
-        var obstacle = obstaclesTable.Evaluate();
+    /*    private void CreateObstacle(float x)
+        {
+            var obstacle = obstaclesTable.Evaluate();
 
-        GameObject obstacleGo = Instantiate(obstacle.Prefab, transform);
-        obstacleGo.transform.position = new Vector2(x, -4.5f);
-    }
+            GameObject obstacleGo = Instantiate(obstacle.Prefab, transform);
+            obstacleGo.transform.position = new Vector2(x, TILE_HEIGHT);
+        }*/
     private void GenerateObstacles()
     {
-        if (obstaclePosXsave >= 9f)
+        for (float x = obstaclePosXsave; x < obstaclePosXsave + batch; x++)
         {
-            for (float x = obstaclePosXsave; x < playerPosXsave + xMax; x++)
-            {
-                CreateObstacle(x + 30f);
-                obstaclePosXsave = x;
-            }
+            CreateObstacle(x, true);
         }
-        /*else if (obstaclePosXsave == 9f)
-        {
-            for (float x = obstaclePosXsave; x < playerPosXsave + xMax; x++)
-            {
-                CreateObstacle(x);
-            }
-        }*/
-
+        obstaclePosXsave = obstaclePosXsave + batch - 1;
     }
     void FixedUpdate()
     {
@@ -76,7 +82,5 @@ public class LevelGenerator : MonoBehaviour
 
             playerPosXsave = pos.x;
         }
-        // cada 10 en la player.transform.position.x
-        // creo una tanda mas de obstaculos (por ej, 10)
     }
 }
