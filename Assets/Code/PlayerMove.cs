@@ -14,7 +14,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float acceleration = 1;
     [SerializeField] private float maxAcceleration = 1;
 
-    [SerializeField] private float distance = 0;
+    [SerializeField] private int distance = 10;
 
     [SerializeField] private float jumpVelocity = 16; //Fuerza de salto
     [SerializeField] private float groundHeight = -2.435f; //Depende de donde está el player, donde va a aterrizar
@@ -30,7 +30,7 @@ public class PlayerMove : MonoBehaviour
 
     [SerializeField] private Animator animator;
 
-    public float Distance => distance;
+    public int Distance => distance;
 
     void Update()
     {
@@ -112,7 +112,7 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-        distance = pos.x += velocity.x * Time.fixedDeltaTime; //Calcula la distancia que recorrimos
+        distance = (int)(pos.x += velocity.x * Time.fixedDeltaTime); //Calcula la distancia que recorrimos
 
         transform.position = pos;
     }

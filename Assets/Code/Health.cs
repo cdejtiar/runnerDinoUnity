@@ -19,6 +19,8 @@ public class Health : MonoBehaviour
 
     public int MaxHealth => maxHealth;
 
+    public int DistancePlayed;
+
     private bool hasShieldBeenCalled = false;
 
     public void Start()
@@ -36,6 +38,9 @@ public class Health : MonoBehaviour
 
             if (current <= 0)
             {
+                DistancePlayed = GameObject.Find("Player").GetComponent<PlayerMove>().Distance;
+                Debug.Log(DistancePlayed);
+                //GameManager.Instance.LevelFinished(DistancePlayed);
                 Instantiate(gameOverWindowPrefab, canvasTransform);
                 Time.timeScale = 0;
             }

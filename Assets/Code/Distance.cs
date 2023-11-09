@@ -8,7 +8,7 @@ public class Distance : MonoBehaviour
 {
     [SerializeField] private PlayerMove player; // Acceder al script PlayerMove
     [SerializeField] private TextMeshProUGUI distanceText;
-    public float currentDistance;
+    public int currentDistance;
 
     void Update()
     {
@@ -19,4 +19,6 @@ public class Distance : MonoBehaviour
             distanceText.text = distanceInt + " m"; //Pongo la distancia cada vez que se actualiza
         }
     }
+
+
 }

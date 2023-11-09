@@ -10,7 +10,7 @@ public class GameOverWindow : MonoBehaviour
     {
         if (distanceText != null)
         {
-            distanceText.text = "Score: " + distanceCalculator.currentDistance.ToString("F2") + " m";
+            distanceText.text = "Actual Score: " + distanceCalculator.currentDistance.ToString("F2") + " m";
         }
     }
 }
