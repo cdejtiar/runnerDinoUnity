@@ -1312,7 +1312,7 @@ MonoBehaviour:
         m_CallState: 2
   maxHealth: 100
   current: 10
-  DistancePlayed: 0
+  distance: {fileID: 359304222}
 --- !u!61 &1062555535
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShieldPrefab : MonoBehaviour
+public class ShieldPrefab : PowerUp
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Animator animator;
+    void OnTriggerEnter2D(Collider2D other)
     {
-        
+        PowerUpUsage(other);
     }
 
-    // Update is called once per frame
-    void Update()
+    // Implementación del método abstracto
+    public override void PowerUpUsage(Collider2D other)
     {
-        
+        other.GetComponent<Health>().Shield();
+        animator.SetBool("isShieldMoving", true);
+        Destroy(gameObject);
     }
 }
