@@ -5,22 +5,15 @@ using UnityEngine;
 public class HealingPrefab : PowerUp
 {
 
-    [SerializeField] private Animator animator;
 
 
-    private int healAmount = 50;
 
-    void OnTriggerEnter2D(Collider2D other)
+    private const int healAmount = 50;
+
+    public override void PowerUpUsage(Health health)
     {
-        PowerUpUsage(other);
-    }
+        health.Healer(healAmount);
 
-    // Implementación del método abstracto
-    public override void PowerUpUsage(Collider2D other)
-    {
-        other.GetComponent<Health>().Healer(healAmount);
-        animator.SetBool("isHealingMoving", true);
-        Destroy(gameObject);
     }
 
 

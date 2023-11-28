@@ -8,8 +8,12 @@ public abstract class PowerUp : MonoBehaviour
 
     //[SerializeField] private Animator animator;
 
-    public abstract void PowerUpUsage(Collider2D other);
-
+    public abstract void PowerUpUsage(Health other);
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        PowerUpUsage(other.GetComponent<Health>());
+        Destroy(gameObject);
+    }
 
     /*
             if (gameObject.tag == "Healing")
