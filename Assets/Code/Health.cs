@@ -21,7 +21,7 @@ public class Health : MonoBehaviour
 
     //public int DistancePlayed;
 
-    [SerializeField] public Distance distance;
+    [SerializeField] private Distance distance;
 
     private bool hasShieldBeenCalled = false;
 
@@ -41,8 +41,8 @@ public class Health : MonoBehaviour
             if (current <= 0)
             {
                 //DistancePlayed = GameObject.Find("Player").GetComponent<PlayerMove>().Distance;
-                //Debug.Log(distance.currentDistance);
-                GameManager.Instance.LevelFinished(distance.currentDistance);
+                //Debug.Log(distance.CurrentDistance);
+                GameManager.Instance.LevelFinished(distance.CurrentDistance);
                 Instantiate(gameOverWindowPrefab, canvasTransform);
                 Time.timeScale = 0;
             }
