@@ -5,6 +5,16 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
     public void LevelFinished(int distancePlayed)
     {
 
@@ -12,6 +22,6 @@ public class GameManager : MonoBehaviour
             ScoreManager.Instance.HighScore = distancePlayed;
 
         //Save(ScoreManager.Instance);
-        Debug.Log($"Highscore: {ScoreManager.Instance.HighScore}");
+        //Debug.Log($"Highscore: {ScoreManager.Instance.HighScore}");
     }
 }

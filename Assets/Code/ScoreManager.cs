@@ -9,16 +9,12 @@ public class ScoreManager : MonoBehaviour
 
     public int HighScore = 0;
 
-    void Awake()
+    public void Awake()
     {
         if (ScoreManager.Instance == null)
         {
             ScoreManager.Instance = this;
             DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
         }
     }
 }

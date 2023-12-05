@@ -25,37 +25,38 @@ public class Health : MonoBehaviour
 
     private bool hasShieldBeenCalled = false;
 
+    private bool isDead = false;
+
     public void Start()
     {
         current = maxHealth;
-
+    }
+    public void Update()
+    {
+        if (isDead)
+        {
+            GameManager.Instance.LevelFinished(distance.CurrentDistance);
+            Instantiate(gameOverWindowPrefab, canvasTransform);
+            Time.timeScale = 0;
+            isDead = false; // Restablece isDead a false para evitar que se llame varias veces
+        }
     }
     public void Damage(int amount)
     {
         if (!hasShieldBeenCalled)
         {
             current -= amount;
-
             onChange.Invoke();
-
             if (current <= 0)
             {
-                //DistancePlayed = GameObject.Find("Player").GetComponent<PlayerMove>().Distance;
-                //Debug.Log(distance.CurrentDistance);
-                GameManager.Instance.LevelFinished(distance.CurrentDistance);
-                Instantiate(gameOverWindowPrefab, canvasTransform);
-                Time.timeScale = 0;
+                isDead = true;
             }
         }
         else
         {
             Shield();
         }
-
-
-
     }
-
     public void Shield()
     {
         hasShieldBeenCalled = true;
@@ -69,12 +70,10 @@ public class Health : MonoBehaviour
     public void Healer(int amount)
     {
         current += amount;
-
         if (current > maxHealth)
         {
             current = maxHealth;
         }
-
         onChange.Invoke();
     }
 }

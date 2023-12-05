@@ -94,8 +94,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85949e8c2e2c6d84b805e43fe95ee004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceCalculator: {fileID: 0}
-  distanceText: {fileID: 2708775093034739276}
+  distance: {fileID: 0}
+  actualScore: {fileID: 1492655738854296174}
+  highScore: {fileID: 2708775093034739276}
 --- !u!1 &2329967849679650060
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,7 +379,7 @@ GameObject:
   - component: {fileID: 5369689402128408703}
   - component: {fileID: 2708775093034739276}
   m_Layer: 5
-  m_Name: Score
+  m_Name: HighScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -513,7 +514,7 @@ GameObject:
   - component: {fileID: 1810497998782689125}
   - component: {fileID: 1492655738854296174}
   m_Layer: 5
-  m_Name: Score (1)
+  m_Name: ActualScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
