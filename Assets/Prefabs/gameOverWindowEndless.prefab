@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85949e8c2e2c6d84b805e43fe95ee004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: {fileID: 0}
+  distancePrefab: {fileID: 6905305857106428880, guid: 2d2f4b863b0764d688302deb99743474, type: 3}
   actualScore: {fileID: 1492655738854296174}
   highScore: {fileID: 2708775093034739276}
 --- !u!1 &2329967849679650060

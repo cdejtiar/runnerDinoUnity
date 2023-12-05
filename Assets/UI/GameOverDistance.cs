@@ -4,7 +4,7 @@ using TMPro;
 public class GameOverWindow : MonoBehaviour
 {
 
-    private Distance distance;
+    //[SerializeField] private Distance Distance;
 
     public TextMeshProUGUI actualScore;
     public TextMeshProUGUI highScore;
@@ -13,7 +13,8 @@ public class GameOverWindow : MonoBehaviour
     {
 
         //Debug.Log(distance.CurrentDistance);
-        actualScore.text = "Actual Score: " + distance.CurrentDistance.ToString("F2") + " m";
+        actualScore.text = "Actual Score: " + ScoreManager.Instance.ActualScore + " m";
+
         highScore.text = "Highscore: " + ScoreManager.Instance.HighScore + "m";
     }
 }

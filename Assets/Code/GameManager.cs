@@ -17,10 +17,8 @@ public class GameManager : MonoBehaviour
 
     public void LevelFinished(int distancePlayed)
     {
-
         if (ScoreManager.Instance.HighScore < distancePlayed)
             ScoreManager.Instance.HighScore = distancePlayed;
-
         //Save(ScoreManager.Instance);
         //Debug.Log($"Highscore: {ScoreManager.Instance.HighScore}");
     }
