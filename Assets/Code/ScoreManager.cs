@@ -8,6 +8,7 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance { get; private set; }
 
     public int HighScore = 0;
+    //public int HighScore { get; set; }
     public int ActualScore = 0;
     public void Awake()
     {
@@ -16,5 +17,8 @@ public class ScoreManager : MonoBehaviour
             ScoreManager.Instance = this;
             DontDestroyOnLoad(gameObject);
         }
+
     }
+
+
 }
