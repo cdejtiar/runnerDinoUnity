@@ -72,13 +72,20 @@ public class DataService
         _connection.InsertAll(new[]{
                 new ScoreManager2{
                     HighScore = ScoreManager.Instance.HighScore
-
     }
 });
     }
     public IEnumerable<ScoreManager2> GetHighscore()
     {
         return _connection.Table<ScoreManager2>();
+    }
+
+    public void UpdateHighscore(int highscore)
+    {
+        _connection.Update(new ScoreManager2
+        {
+            HighScore = highscore
+        });
     }
 
     /*
