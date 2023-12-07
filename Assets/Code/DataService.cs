@@ -91,64 +91,7 @@ public class DataService
         }
         else
         {
-            // Si no hay registro existente, puedes decidir crear uno nuevo o manejarlo según tus necesidades.
-            // Aquí, estoy creando un nuevo registro con el nuevo valor.
             _connection.Insert(new ScoreManager2 { HighScore = newHighscore });
         }
     }
-
-    /*
-        public void CreateDB(){
-            _connection.DropTable<Person> ();
-            _connection.CreateTable<Person> ();
-
-            _connection.InsertAll (new[]{
-                new Person{
-                    Id = 1,
-                    Name = "Tom",
-                    Surname = "Perez",
-                    Age = 56
-                },
-                new Person{
-                    Id = 2,
-                    Name = "Fred",
-                    Surname = "Arthurson",
-                    Age = 16
-                },
-                new Person{
-                    Id = 3,
-                    Name = "John",
-                    Surname = "Doe",
-                    Age = 25
-                },
-                new Person{
-                    Id = 4,
-                    Name = "Roberto",
-                    Surname = "Huertas",
-                    Age = 37
-                }
-            });
-        }
-
-        public IEnumerable<Person> GetPersons(){
-            return _connection.Table<Person>();
-        }
-
-        public IEnumerable<Person> GetPersonsNamedRoberto(){
-            return _connection.Table<Person>().Where(x => x.Name == "Roberto");
-        }
-
-        public Person GetJohnny(){
-            return _connection.Table<Person>().Where(x => x.Name == "Johnny").FirstOrDefault();
-        }
-
-        public Person CreatePerson(){
-            var p = new Person{
-                    Name = "Johnny",
-                    Surname = "Mnemonic",
-                    Age = 21
-            };
-            _connection.Insert (p);
-            return p;
-        }*/
 }
