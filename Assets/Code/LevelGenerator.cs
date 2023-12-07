@@ -49,19 +49,6 @@ public class LevelGenerator : MonoBehaviour
 
 
     }
-    /*private void CreateInicialGround(float x)
-    {
-        var ground = Instantiate(groundPrefab, transform);
-        ground.transform.position = new Vector2(x, TILE_HEIGHT);
-    }*/
-
-    /*    private void CreateObstacle(float x)
-        {
-            var obstacle = obstaclesTable.Evaluate();
-
-            GameObject obstacleGo = Instantiate(obstacle.Prefab, transform);
-            obstacleGo.transform.position = new Vector2(x, TILE_HEIGHT);
-        }*/
     private void GenerateObstacles()
     {
         for (float x = obstaclePosXsave; x < obstaclePosXsave + batch; x++)

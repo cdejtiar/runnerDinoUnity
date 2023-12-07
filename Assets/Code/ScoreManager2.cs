@@ -8,6 +8,6 @@ public class ScoreManager2
 
     public override string ToString()
     {
-        return string.Format("hola: ", HighScore);
+        return string.Format("", HighScore);
     }
 }
