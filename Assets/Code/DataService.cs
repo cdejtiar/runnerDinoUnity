@@ -67,7 +67,7 @@ public class DataService
     }
     public void CreateDB()
     {
-        _connection.DropTable<ScoreManager2>();
+        //_connection.DropTable<ScoreManager2>();
         _connection.CreateTable<ScoreManager2>();
         _connection.InsertAll(new[]{
                 new ScoreManager2{

@@ -15,7 +15,7 @@ public class CreateDBScript : MonoBehaviour
 
     private void StartSync()
     {
-        var ds = new DataService("tempDatabase.db");
+        var ds = new DataService("databaseRunnerDino.db");
         ds.CreateDB();
         var HighScore = ds.GetHighscore();
         ToConsole("highscore:" + HighScore);
