@@ -38,7 +38,7 @@ public class Health : MonoBehaviour
             GameManager.Instance.LevelFinished(distance.CurrentDistance);
             Instantiate(gameOverWindowPrefab, canvasTransform);
             Time.timeScale = 0;
-            isDead = false; // Restablece isDead a false para evitar que se llame varias veces
+            isDead = false;
         }
     }
     public void Damage(int amount)
