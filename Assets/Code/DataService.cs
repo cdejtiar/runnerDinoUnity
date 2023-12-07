@@ -80,12 +80,21 @@ public class DataService
         return _connection.Table<ScoreManager2>();
     }
 
-    public void UpdateHighscore(int highscore)
+    public void UpdateHighscore(int newHighscore)
     {
-        _connection.Update(new ScoreManager2
+        var existingRecord = _connection.Table<ScoreManager2>().FirstOrDefault();
+
+        if (existingRecord != null)
         {
-            HighScore = highscore
-        });
+            existingRecord.HighScore = newHighscore;
+            _connection.Execute("UPDATE ScoreManager2 SET HighScore = ? ", existingRecord.HighScore);
+        }
+        else
+        {
+            // Si no hay registro existente, puedes decidir crear uno nuevo o manejarlo según tus necesidades.
+            // Aquí, estoy creando un nuevo registro con el nuevo valor.
+            _connection.Insert(new ScoreManager2 { HighScore = newHighscore });
+        }
     }
 
     /*

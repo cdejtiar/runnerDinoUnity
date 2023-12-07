@@ -10,11 +10,13 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance { get; private set; }
 
     public int highScore = 0;
-    public int HighScore { 
-        get => highScore; 
-        set {
+    public int HighScore
+    {
+        get => highScore;
+        set
+        {
             this.highScore = value;
-            //Persist();
+            Persist();
         }
     }
     public int ActualScore = 0;
@@ -42,7 +44,8 @@ public class ScoreManager : MonoBehaviour
 
     }
 
-    private void Persist(){
+    private void Persist()
+    {
         var ds = new DataService("databaseRunnerDino.db");
         ds.UpdateHighscore(this.highScore);
     }
