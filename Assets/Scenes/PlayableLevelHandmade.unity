@@ -3749,6 +3749,7 @@ MonoBehaviour:
         m_CallState: 2
   maxHealth: 100
   current: 10
+  distance: {fileID: 1674480888}
 --- !u!114 &1062555535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3769,8 +3770,6 @@ MonoBehaviour:
   distance: 0
   jumpVelocity: 16
   groundHeight: -2.435
-  isGrounded: 0
-  isHoldingJump: 0
   maxHoldJump: 0.4
   holdJumpTimer: 0
   jumpGroundThreshold: 0.3
@@ -4402,7 +4401,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1062555535}
   distanceText: {fileID: 359304220}
-  currentDistance: 0
 --- !u!1001 &1796097587
 PrefabInstance:
   m_ObjectHideFlags: 0
