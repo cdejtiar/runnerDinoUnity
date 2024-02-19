@@ -78,10 +78,20 @@ public class DataService
         //insert highscore into table in sql query
         _connection.Execute("INSERT INTO ScoreManager2 (HighScore) VALUES (?)", ScoreManager.Instance.HighScore);
     }
-    public IEnumerable<ScoreManager2> GetHighscore()
+    /*public IEnumerable<ScoreManager2> GetHighscore()
     {
         return _connection.Table<ScoreManager2>();
-    }
+    }*/
+
+    public int GetHighscore()
+{
+    var highestScoreRecord = _connection.Table<ScoreManager2>()
+                                        .OrderByDescending(s => s.HighScore)
+                                        .FirstOrDefault();
+    
+    return highestScoreRecord != null ? highestScoreRecord.HighScore : 0;
+}
+
 
     public void UpdateHighscore(int newHighscore)
     {
