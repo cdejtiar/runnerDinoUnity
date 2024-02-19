@@ -32,6 +32,7 @@ public class ScoreManager : MonoBehaviour
 
             var ds = new DataService("databaseRunnerDino.db");
             ds.CreateDB();
+            
             var Highscore = ds.GetHighscore().FirstOrDefault();
             this.HighScore = Highscore != null ? Highscore.HighScore : 0;
 

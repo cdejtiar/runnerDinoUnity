@@ -50,9 +50,9 @@ public class DataService
 		// then save to Application.persistentDataPath
 		File.Copy(loadDb, filepath);
 #else
-	var loadDb = Application.dataPath + "/StreamingAssets/" + DatabaseName;  // this is the path to your StreamingAssets in iOS
-	// then save to Application.persistentDataPath
-	File.Copy(loadDb, filepath);
+            var loadDb = Application.dataPath + "/StreamingAssets/" + DatabaseName;  // this is the path to your StreamingAssets in iOS
+                                                                                     // then save to Application.persistentDataPath
+            File.Copy(loadDb, filepath);
 
 #endif
 
@@ -69,11 +69,14 @@ public class DataService
     {
         //_connection.DropTable<ScoreManager2>();
         _connection.CreateTable<ScoreManager2>();
-        _connection.InsertAll(new[]{
+        /*_connection.InsertAll(new[]{
                 new ScoreManager2{
                     HighScore = ScoreManager.Instance.HighScore
             }
-        });
+        });*/
+
+        //insert highscore into table in sql query
+        _connection.Execute("INSERT INTO ScoreManager2 (HighScore) VALUES (?)", ScoreManager.Instance.HighScore);
     }
     public IEnumerable<ScoreManager2> GetHighscore()
     {
