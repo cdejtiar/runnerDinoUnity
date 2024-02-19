@@ -69,7 +69,12 @@ public class Health : MonoBehaviour
     }
     public void Healer(int amount)
     {
-        current += amount;
+        //Validar amount en Healing para que sea > 0
+        if (amount > 0)
+        {
+            current += amount;
+        }
+
         if (current > maxHealth)
         {
             current = maxHealth;

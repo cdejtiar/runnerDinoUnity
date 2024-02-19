@@ -12,9 +12,9 @@ public class Distance : MonoBehaviour
 
     public int CurrentDistance => currentDistance;
 
-    void Update()
+    void Update() //hacer corrutina de 1s (probar)
     {
-        if (player != null)
+        if (player != null) //probar sacar el if
         {
             int distanceInt = Mathf.FloorToInt(player.Distance + 10); //Calculo la distancia y la redondeo para un int, +10 porque la pos.x empieza en -10, ¡preguntar para no forzarlo!
             currentDistance = distanceInt;
@@ -22,6 +22,4 @@ public class Distance : MonoBehaviour
             ScoreManager.Instance.ActualScore = currentDistance;
         }
     }
-
-
 }

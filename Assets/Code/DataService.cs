@@ -72,8 +72,8 @@ public class DataService
         _connection.InsertAll(new[]{
                 new ScoreManager2{
                     HighScore = ScoreManager.Instance.HighScore
-    }
-});
+            }
+        });
     }
     public IEnumerable<ScoreManager2> GetHighscore()
     {

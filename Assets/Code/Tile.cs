@@ -1,8 +1,8 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Obstacle", menuName = "runnerDino/Obstacle", order = 0)]
+[CreateAssetMenu(fileName = "Tile", menuName = "runnerDino/Tile", order = 0)]
 
-public class Obstacle : ScriptableObject, IWeightable
+public class Tile : ScriptableObject, IWeightable
 {
     [SerializeField] private int damage = 25;
     [SerializeField] private string obstacleName;
